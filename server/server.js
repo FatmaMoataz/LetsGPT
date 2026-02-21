@@ -18,7 +18,12 @@ stripeWebhooks
 )
 
 // Middleware
-app.use(cors())
+app.use(cors({
+    origin: "https://lets-gpt.vercel.app/" || "http://localhost:5173",
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+}))
 app.use(express.json())
 
 // Routes
