@@ -7,35 +7,41 @@ import chatRouter from './routes/chatRoutes.js'
 import messageRouter from './routes/messageRoutes.js'
 import creditRouter from './routes/creditRoutes.js'
 import { stripeWebhooks } from './controllers/webhooks.js'
- 
+
 const app = express()
 
 await connectDB()
 
 // Stripe Webhooks
-app.post('/api/stripe' , express.raw({type:"application/json"}),
-stripeWebhooks
-)
+app.post('/api/stripe' , express.raw({type:"application/json"}), stripeWebhooks)
 
-// Middleware
+// CORS middleware
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://lets-gpt.vercel.app"
+]
+
 app.use(cors({
-    origin: "https://lets-gpt.vercel.app/" || "http://localhost:5173",
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+  allowedHeaders: ['Content-Type','Authorization'],
+  methods: ['GET','POST','PUT','DELETE','PATCH','OPTIONS']
 }))
+
 app.use(express.json())
 
 // Routes
-app.get('/' , (req , res) => res.send('Server is Live!'))
-app.use('/api/user' , userRouter)
-app.use('/api/chat' , chatRouter)
-app.use('/api/message' , messageRouter)
-app.use('/api/credit' , creditRouter)
+app.get('/', (req, res) => res.send('Server is Live!'))
+app.use('/api/user', userRouter)
+app.use('/api/chat', chatRouter)
+app.use('/api/message', messageRouter)
+app.use('/api/credit', creditRouter)
 
 const PORT = process.env.PORT || 3000
-
-app.listen(PORT , () => {
-    console.log(`Server is running on port ${PORT}`);
-    
-})
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

@@ -8,19 +8,21 @@ import { assets } from "./assets/assets.js";
 import Loading from "./pages/Loading.jsx";
 import { useAppContext } from "./context/AppContext.jsx";
 import Login from "./pages/Login.jsx";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
 
-  const {user} = useAppContext()
+  const {user , loadingUser} = useAppContext()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {pathname} = useLocation()
 
-  if(pathname === '/loading') {
+  if(pathname === '/loading' || loadingUser) {
 return <Loading/>
   }
 
   return (
     <>
+    <Toaster/>
       {!isMenuOpen && (
         <img
           src={assets.menu}
