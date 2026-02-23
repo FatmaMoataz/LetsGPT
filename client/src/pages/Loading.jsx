@@ -8,7 +8,7 @@ const Loading = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigate('/')
-    },8000)
+    },5000)
     return () => clearTimeout(timeout)
   } ,[])
 

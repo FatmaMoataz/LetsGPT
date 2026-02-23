@@ -18,7 +18,8 @@ app.post('/api/stripe' , express.raw({type:"application/json"}), stripeWebhooks)
 // CORS middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://lets-gpt.vercel.app"
+  "https://lets-gpt.vercel.app",
+  "https://lets-67w90k1g2-fatmas-projects-f6a9a503.vercel.app/"
 ]
 
 app.use(cors({
@@ -33,6 +34,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type','Authorization'],
   methods: ['GET','POST','PUT','DELETE','PATCH','OPTIONS']
 }))
+// app.use(cors())
 
 app.use(express.json())
 
