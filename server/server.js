@@ -19,7 +19,7 @@ app.post('/api/stripe' , express.raw({type:"application/json"}), stripeWebhooks)
 const allowedOrigins = [
   "http://localhost:5173",
   "https://lets-gpt.vercel.app",
-  "https://lets-67w90k1g2-fatmas-projects-f6a9a503.vercel.app/"
+  "https://lets-67w90k1g2-fatmas-projects-f6a9a503.vercel.app"
 ]
 
 app.use(cors({
