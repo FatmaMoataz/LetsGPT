@@ -208,11 +208,7 @@ npm start
 
 ## 🚀 Deployment
 
-### Frontend
-
-* Vercel
-
-### Backend
+### Frontend & Backend
 
 * Vercel
 
@@ -220,9 +216,9 @@ Make sure to configure environment variables in deployment dashboard.
 
 ---
 
-## 📸 Screenshots
+## 📸 Screen Record
 
-![LetsGPT](https://github.com/user-attachments/assets/09a6990c-a6a4-44f3-8e80-df36e0fe0737)
+[![video](https://github.com/user-attachments/assets/09a6990c-a6a4-44f3-8e80-df36e0fe0737)](https://github.com/user-attachments/assets/ac30e604-fb1c-4d53-980c-32e17ae72035)
 
 ---
 
