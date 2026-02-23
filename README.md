@@ -224,7 +224,7 @@ Make sure to configure environment variables in deployment dashboard.
 
 ## 📜 License
 
-MIT License
+MIT License © 2026 Fatma Moataz
 
 ---
 
